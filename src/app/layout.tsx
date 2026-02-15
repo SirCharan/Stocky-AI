@@ -36,12 +36,21 @@ export const metadata: Metadata = {
     siteName: "Stocky",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Stocky — Precision. Discipline. Edge.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Stocky — Precision. Discipline. Edge.",
     description:
       "An AI trading engine built for the few who think in payoffs, not predictions.",
+    images: ["/og-image.png"],
   },
 };
 
