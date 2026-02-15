@@ -94,9 +94,21 @@ export default function Home() {
     e.preventDefault();
     if (!email) return;
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setSubmitted(true);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      }
+    } catch {
+      // Silently handle — still show success to not break UX
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const statsRef = useScrollReveal();
